@@ -1,60 +1,70 @@
-# AI Projects
+# AI Web Apps
 
-Three small web apps I built while learning how to connect AI models to real interfaces. Each one solves a different everyday problem and takes less than a minute to use.
+Three web apps that put AI models to practical use. All built with Python and Streamlit, all live and usable right now.
 
-All three are built with Python and Streamlit, and use the Groq API to run the Llama 3.3 70B language model.
+**Stack:** Python · Streamlit · Groq API · LLaMA 3.3 70B
+
+Built by Navedh — second-year Electronics Engineering student from Kerala, India.
 
 ---
 
-## Projects
+## Apps
 
 ### 1. AI Essay Checker
-Paste any essay and get feedback on grammar, clarity, argument strength, and specific things to improve.
+[![Live App](https://img.shields.io/badge/Live_App-FF4B4B?style=flat&logo=streamlit&logoColor=white)](https://navedh121-ai-projects-essay-checker-56julk.streamlit.app)
 
-I built this first because it was the simplest way to understand how sending a prompt to an AI model works and how to display the response in a clean UI.
+Paste any essay and get structured feedback: grammar, clarity, argument strength, and specific things to fix.
 
-Live app: https://navedh121-ai-projects-essay-checker-56julk.streamlit.app
+I built this first because it was the simplest way to understand how sending a prompt to a language model actually works — what you send in, what comes back, how you display it in a UI.
+
+**How the AI part works:**
+```
+User pastes essay → Streamlit text area
+     ↓
+System prompt + essay text → Groq API (LLaMA 3.3 70B)
+     ↓
+Model returns structured critique → displayed in Streamlit
+```
 
 ---
 
 ### 2. YouTube Script Generator
-Fill in a topic, target audience, video length, and tone. The app writes a full script with a hook, main sections, and a call to action.
+[![Live App](https://img.shields.io/badge/Live_App-FF4B4B?style=flat&logo=streamlit&logoColor=white)](https://ai-projects-xqrftqlbzndy9zzspfu5x9.streamlit.app)
 
-This one taught me prompt engineering. The quality of the output completely depends on how well you structure the instructions you give the model.
+Fill in topic, target audience, video length, and tone. The app writes a full script with a hook, main sections, and a call to action.
 
-Live app: https://ai-projects-xqrftqlbzndy9zzspfu5x9.streamlit.app
+This one taught me prompt engineering. The quality of the output is almost entirely determined by how clearly you specify what you want — vague instructions give generic scripts.
+
+**What I learned:**
+- Structured prompts (with explicit labels like "Hook:", "Section 1:", "CTA:") produce far more usable output than open-ended requests
+- Passing user inputs as variables into the prompt template gives the model enough context to write specifically, not generically
 
 ---
 
 ### 3. Resume Analyser
-Upload your resume as a text file and enter the job role you are applying for. The app scores your resume out of 10 and tells you what is working, what is missing, and what to fix.
+[![Live App](https://img.shields.io/badge/Live_App-FF4B4B?style=flat&logo=streamlit&logoColor=white)](https://ai-projects-cqvvpa7pk928xajp5wlbzp.streamlit.app)
 
-This introduced me to file handling in Streamlit and how to pass document content into a prompt.
+Upload your resume as a text file and enter the role you are targeting. The app scores your resume out of 10 and tells you what is working, what is missing, and what to fix.
 
-Live app: https://ai-projects-cqvvpa7pk928xajp5wlbzp.streamlit.app
+This introduced me to file handling in Streamlit — reading uploaded file content and injecting it into a prompt so the model can reason about the actual document.
 
 ---
 
-## How to run locally
+## How to Run Locally
 
-1. Clone the repo
-```
-git clone https://github.com/Navedh121/ai-projects.git
-cd ai-projects
-```
-
-2. Install dependencies
-```
+```bash
+git clone https://github.com/Navedh121/ai-web-apps.git
+cd ai-web-apps
 pip install -r requirements.txt
 ```
 
-3. Create a `.env` file and add your Groq API key
+Create a `.env` file:
 ```
 GROQ_API_KEY=your-key-here
 ```
 
-4. Run any app
-```
+Run any app:
+```bash
 streamlit run essay_checker.py
 streamlit run yt_script_generator.py
 streamlit run resume_analyser.py
@@ -62,15 +72,6 @@ streamlit run resume_analyser.py
 
 ---
 
-## Stack
-
-- Python
-- Streamlit
-- Groq API
-- Llama 3.3 70B
-
----
-
 ## About
 
-I am a second year Electronics Engineering student from Kerala. These projects are part of my journey learning to build real things with AI, not just study it.
+I built these while learning how to connect AI models to real interfaces — not just call an API and print the response, but wrap it in something a person can actually use. The Groq API is fast enough that these feel snappy even for longer outputs.
